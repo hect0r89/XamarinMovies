@@ -34,11 +34,11 @@ namespace SeriesXamarin
 
         public async Task<Request> getShows(int page, String query)
         {
-            var uri = new Uri(string.Format("https://yts.ag/api/v2/list_movies.json?page={0}", page));
+            var uri = new Uri(string.Format("https://yts.ag/api/v2/list_movies.json?sort_by=rating&page={0}", page));
             if (query != "")
             {
 
-                uri = new Uri(string.Format("https://yts.ag/api/v2/list_movies.json?query_term={0}&page={1}", query, page));
+                uri = new Uri(string.Format("https://yts.ag/api/v2/list_movies.json?query_term={0}&sort_by=rating&page={1}", query, page));
             }
 
 
