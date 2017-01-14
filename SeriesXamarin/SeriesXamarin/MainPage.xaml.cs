@@ -42,12 +42,18 @@ namespace SeriesXamarin
             }
 
 
-
-            var response = await client.GetAsync(uri);
-            if (response.IsSuccessStatusCode)
+            try
             {
-                var content = await response.Content.ReadAsStringAsync();
-                return JsonConvert.DeserializeObject<Request>(content);
+                var response = await client.GetAsync(uri);
+                if (response.IsSuccessStatusCode)
+                {
+                    var content = await response.Content.ReadAsStringAsync();
+                    return JsonConvert.DeserializeObject<Request>(content);
+                }
+            }
+            catch (Exception e)
+            {
+                await DisplayAlert("Info", "Movies not found.", "OK");
             }
             return null;
 
